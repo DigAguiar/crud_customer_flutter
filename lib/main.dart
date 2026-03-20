@@ -1,8 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+
+import 'data/models/customer_model.dart';
 import 'ui/screens/home_screen.dart';
 
-void main() {
+void main() async {
+
+  WidgetsFlutterBinding.ensureInitialized();
+  
+  await Hive.initFlutter();
+  
+  Hive.registerAdapter(CustomerModelAdapter());
+  
   runApp(
     const ProviderScope(
       child: MyApp(),
@@ -16,8 +26,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Customer CRUD',
-      theme: ThemeData(useMaterial3: true, colorSchemeSeed: Colors.blue),
+      title: 'Customer Registration',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
+        useMaterial3: true, 
+      ),
       home: const HomeScreen(),
     );
   }
