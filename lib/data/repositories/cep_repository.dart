@@ -1,5 +1,6 @@
 
 
+import 'package:customer_registration/core/constants.dart';
 import 'package:dio/dio.dart';
 
 class CepRepository {
@@ -13,7 +14,8 @@ class CepRepository {
     }
 
     try{
-      final response = await _dio.get('https://viacep.com.br/ws/$cleanCep/json');
+
+      final response = await _dio.get(AppConstants.viaCepBaseUrl + cleanCep + '/json');
 
       if(response.data['error'] == true ) {
         throw Exception("CEP not found.");
