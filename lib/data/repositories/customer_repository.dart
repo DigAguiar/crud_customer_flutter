@@ -15,6 +15,7 @@ class CustomerRepository {
     return box.values.toList();
   }
 
+  // o box.put serve também como UPDATE
   Future<void> save(CustomerModel customer) async {
     final box = await _openBox();
     await box.put(customer.id, customer);
