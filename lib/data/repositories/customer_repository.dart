@@ -10,6 +10,12 @@ class CustomerRepository {
     return await Hive.openBox<CustomerModel>(boxName);
   }
 
+  // pode ser nulo
+  Future<CustomerModel?> findById(String customerId) async {
+    final box = await _openBox();
+    return box.get(customerId);
+  }
+
   Future<List<CustomerModel>> findAll() async {
     final box = await _openBox();
     return box.values.toList();
