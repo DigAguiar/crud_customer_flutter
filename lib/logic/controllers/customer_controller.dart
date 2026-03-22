@@ -28,6 +28,13 @@ class CustomerController extends _$CustomerController {
     });
   }
 
+  Future<void> updateCustomer(CustomerModel updatedCustomer) async {
+  state = await AsyncValue.guard(() async {
+    await _service.saveCustomer(updatedCustomer); // O service usa box.put que sobrescreve pelo ID
+    return _service.findAllCustomer(); 
+  });
+}
+
   Future<CustomerModel> findById(String customerId) async {
     return await _service.findCustomerById(customerId);
   }
