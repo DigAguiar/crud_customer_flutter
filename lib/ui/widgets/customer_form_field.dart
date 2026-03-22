@@ -11,9 +11,10 @@ class CustomerFormField extends StatelessWidget{
   final TextInputType keyboardType;
   final IconData? icon;
   final bool readOnly;
+  final int? maxLength;
   final Function(String)? onChanged;
   final List<TextInputFormatter>? inputFormatters;
-  final int? maxLength;
+  final FocusNode? focusNode;
 
   const CustomerFormField({
     required this.label,
@@ -24,7 +25,8 @@ class CustomerFormField extends StatelessWidget{
     required this.readOnly,
     this.onChanged,
     this.inputFormatters,
-    this.maxLength
+    this.maxLength,
+    this.focusNode
   });
 
   @override
@@ -41,6 +43,7 @@ class CustomerFormField extends StatelessWidget{
         inputFormatters: this.inputFormatters,
         maxLength: this.maxLength,
         buildCounter: (context, {required currentLength, required isFocused, maxLength}) => null,
+        focusNode: this.focusNode,
         decoration: InputDecoration(
           labelText: this.label,
           prefixIcon: this.icon != null ? Icon(icon) : null,
