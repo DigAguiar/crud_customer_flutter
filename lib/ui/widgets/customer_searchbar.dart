@@ -1,4 +1,4 @@
-// lib/ui/widgets/customer_search_bar.dart
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../logic/providers/customer_filter_provider.dart';

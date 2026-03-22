@@ -14,9 +14,8 @@ class HomeScreen extends ConsumerWidget {
 
 @override
 Widget build(BuildContext context, WidgetRef ref) {
-  // 1. Assistimos o estado filtrado (ele é quem manda na lista agora)
   final filteredState = ref.watch(filteredCustomersProvider);
-  // Mantemos o original apenas para saber se a base está realmente vazia
+  
   final customerState = ref.watch(customerControllerProvider);
 
   return Scaffold(
@@ -27,18 +26,15 @@ Widget build(BuildContext context, WidgetRef ref) {
     ),
     body: Column(
       children: [
-        // 2. Chamada do seu Widget de busca
+        
         const CustomerSearchBar(),
 
-        // 3. O Expanded garante que a lista ocupe o espaço que sobrar
         Expanded(
           child: filteredState.when(
             loading: () => const Center(child: CircularProgressIndicator()),
             error: (err, stack) => Center(child: Text('Erro ao carregar: $err')),
             data: (customers) {
-              // Verificação inteligente:
-              // Se a lista original está vazia -> "Nenhum cliente cadastrado"
-              // Se a lista filtrada está vazia -> "Nenhum resultado para a busca"
+              
               if (customers.isEmpty) {
                 final isSearching = ref.read(customerSearchQueryProvider).isNotEmpty;
                 return Center(

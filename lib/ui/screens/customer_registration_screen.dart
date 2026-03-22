@@ -25,7 +25,6 @@ class _CustomerRegistrationScreenState
   String? _cepErrorMessage;
   final FocusNode _cepFocusNode = FocusNode();
 
-  // Controladores para os campos
   final _nameController = TextEditingController();
   final _emailController = TextEditingController();
   final _phoneController = TextEditingController();
@@ -108,7 +107,6 @@ class _CustomerRegistrationScreenState
   }
 
   Future<void> _searchCep(String value) async {
-    // Se o usuário apagar ou mudar o CEP, limpamos o erro anterior para ele tentar de novo
     if (_cepErrorMessage != null) {
       setState(() => _cepErrorMessage = null);
     }
@@ -123,14 +121,13 @@ class _CustomerRegistrationScreenState
             _cityController.text = address['localidade'] ?? '';
             _neighborhoodController.text = address['bairro'] ?? '';
             _streetController.text = address['logradouro'] ?? '';
-            _cepErrorMessage = null; // Sucesso!
+            _cepErrorMessage = null;
           });
         }
       } catch (e) {
         setState(() {
           _cepErrorMessage = e.toString().replaceAll('Exception: ', '');
 
-          // Limpa os campos para não salvar lixo
           _stateController.clear();
           _cityController.clear();
           _neighborhoodController.clear();
@@ -138,7 +135,7 @@ class _CustomerRegistrationScreenState
         });
       }
 
-      // Força o formulário a se revalidar para mostrar o erro em vermelho imediatamente
+      
       _formKey.currentState?.validate();
     }
   }
