@@ -1,5 +1,4 @@
 import 'package:customer_registration/data/models/customer_model.dart';
-import 'package:customer_registration/data/repositories/customer_repository.dart';
 import 'package:customer_registration/logic/services/customer_service.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
