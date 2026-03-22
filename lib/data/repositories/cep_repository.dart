@@ -15,13 +15,16 @@ class CepRepository {
       final response =
           await _dio.get('${AppConstants.viaCepBaseUrl}$cleanCep/json/');
 
-      if (response.data['error'] == true) {
-        throw Exception("CEP not found.");
+      if (response.data['erro'] == true) {
+        throw Exception("CEP não encontrado.");
       }
 
       return response.data;
     } catch (e) {
-      throw Exception("Error -> " + e.toString());
+      if (e is Exception && e.toString().contains("CEP não encontrado")) {
+        rethrow;
+      }
+      throw Exception("Erro na busca do CEP. -> " + e.toString());
     }
   }
 }
