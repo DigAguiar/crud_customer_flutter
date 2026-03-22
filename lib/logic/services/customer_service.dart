@@ -6,8 +6,8 @@ import 'package:customer_registration/data/repositories/customer_repository.dart
 
 class CustomerService {
 
-  final CustomerRepository _repository;
-  CustomerService(this._repository);
+  final CustomerRepository _repository = CustomerRepository();
+  CustomerService();
 
   Future<List<CustomerModel>> findAllCustomer() async {
     return _repository.findAll();
