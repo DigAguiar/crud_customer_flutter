@@ -1,10 +1,8 @@
 
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 
-class CustomerFormField extends StatelessWidget{
+class CustomerFormField extends StatelessWidget {
   final String label;
   final TextEditingController controller;
   final String? Function(String?)? validator;
@@ -17,6 +15,7 @@ class CustomerFormField extends StatelessWidget{
   final FocusNode? focusNode;
 
   const CustomerFormField({
+    super.key, 
     required this.label,
     required this.controller,
     this.validator,
@@ -26,34 +25,34 @@ class CustomerFormField extends StatelessWidget{
     this.onChanged,
     this.inputFormatters,
     this.maxLength,
-    this.focusNode
+    this.focusNode,
   });
 
   @override
   Widget build(BuildContext context) {
-
     return Padding(
-      padding: const EdgeInsetsGeometry.symmetric(vertical: 8.0),
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: TextFormField(
-        controller: this.controller,
-        validator: this.validator,
-        keyboardType: this.keyboardType,
-        readOnly: this.readOnly,
-        onChanged: this.onChanged,
-        inputFormatters: this.inputFormatters,
-        maxLength: this.maxLength,
+        controller: controller,
+        validator: validator,
+        keyboardType: keyboardType,
+        readOnly: readOnly,
+        onChanged: onChanged,
+        inputFormatters: inputFormatters,
+        maxLength: maxLength,
         buildCounter: (context, {required currentLength, required isFocused, maxLength}) => null,
-        focusNode: this.focusNode,
+        focusNode: focusNode,
+
+        autovalidateMode: AutovalidateMode.onUserInteraction, 
         decoration: InputDecoration(
-          labelText: this.label,
-          prefixIcon: this.icon != null ? Icon(icon) : null,
+          labelText: label,
+          prefixIcon: icon != null ? Icon(icon) : null,
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
-          filled: this.readOnly,
-          fillColor: this.readOnly ? Colors.grey[200] : null,
+          filled: readOnly,
+          fillColor: readOnly ? Colors.grey[200] : null,
+          errorMaxLines: 2, 
         ),
       ),
     );
   }
-
-
 }
