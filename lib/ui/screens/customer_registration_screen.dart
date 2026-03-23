@@ -1,5 +1,5 @@
-import 'package:brasil_fields/brasil_fields.dart';
 import 'package:customer_registration/core/utils/custom_cep_formatter.dart';
+import 'package:customer_registration/core/utils/custom_phone_formatter.dart';
 import 'package:customer_registration/data/repositories/cep_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -180,7 +180,7 @@ class _CustomerRegistrationScreenState
                 readOnly: false,
                 maxLength: 15,
                 inputFormatters: [
-                  TelefoneInputFormatter()
+                  CustomPhoneFormatter()
                 ],
               ),
               const Divider(height: 32),
