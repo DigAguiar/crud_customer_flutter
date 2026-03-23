@@ -1,9 +1,8 @@
-
 class CustomerValidator {
   static String? validateName(String? name) {
-    if (name == null || name.trim().isEmpty){
+    if (name == null || name.trim().isEmpty) {
       return "Campo obrigatório.";
-    } 
+    }
     if (name.trim().length < 3) {
       return "Minimo de 3 caracter";
     }
@@ -21,7 +20,7 @@ class CustomerValidator {
     return null;
   }
 
-  static String? validatePhone(String? phone ) {
+  static String? validatePhone(String? phone) {
     if (phone == null || phone.trim().isEmpty) {
       return "Campo obrigatório";
     }
@@ -30,5 +29,13 @@ class CustomerValidator {
       return "Telefone incompleto.";
     }
     return null;
+  }
+
+  static String? validateCep(String? cep, String? apiErrorMessage) {
+    if (cep == null || cep.isEmpty) return null;
+    
+    if (cep.length < 9) return "CEP Incompleto";
+
+    return apiErrorMessage;
   }
 }
