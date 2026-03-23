@@ -195,13 +195,7 @@ class _CustomerRegistrationScreenState
                 maxLength: 9,
                 inputFormatters: [CustomCepFormatter()],
                 onChanged: _searchCep,
-                validator: (value) {
-                  if (value == null || value.isEmpty) return "Campo obrigatório";
-
-                  if (value.length < 9) return "CEP Incompleto";
-
-                  return _cepErrorMessage;
-                },
+                validator: (value) => CustomerValidator.validateCep(value, _cepErrorMessage),
               ),
               CustomerFormField(
                 label: "Rua",
