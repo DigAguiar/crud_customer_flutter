@@ -21,13 +21,13 @@ class CustomerModelAdapter extends TypeAdapter<CustomerModel> {
       name: fields[1] as String,
       email: fields[2] as String,
       phone: fields[3] as String,
-      cep: fields[4] as String,
-      street: fields[5] as String,
-      number: fields[6] as String,
+      cep: fields[4] as String?,
+      street: fields[5] as String?,
+      number: fields[6] as String?,
       complement: fields[7] as String?,
-      neighborhood: fields[8] as String,
-      city: fields[9] as String,
-      state: fields[10] as String,
+      neighborhood: fields[8] as String?,
+      city: fields[9] as String?,
+      state: fields[10] as String?,
     );
   }
 
