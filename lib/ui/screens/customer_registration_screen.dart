@@ -174,6 +174,7 @@ class _CustomerRegistrationScreenState
               CustomerFormField(
                 label: "Telefone",
                 controller: _phoneController,
+                validator: CustomerValidator.validatePhone,
                 keyboardType: TextInputType.phone,
                 icon: Icons.phone,
                 readOnly: false,
