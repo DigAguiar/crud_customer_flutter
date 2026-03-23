@@ -26,8 +26,8 @@ class MyApp extends StatelessWidget {
       title: 'Customer CRUD',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         useMaterial3: true,
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
       ),
       home: const HomeScreen(),
     );
