@@ -2,7 +2,6 @@ import 'package:customer_registration/core/utils/custom_cep_formatter.dart';
 import 'package:customer_registration/core/utils/custom_phone_formatter.dart';
 import 'package:customer_registration/data/repositories/cep_repository.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../data/models/customer_model.dart';
 import '../../logic/controllers/customer_controller.dart';
@@ -59,7 +58,7 @@ class _CustomerRegistrationScreenState
     if (widget.customer != null) {
       _nameController.text = widget.customer!.name;
       _emailController.text = widget.customer!.email;
-      _phoneController.text = widget.customer!.phone ?? '';
+      _phoneController.text = widget.customer!.phone;
       _cepController.text = widget.customer!.cep ?? '';
       _streetController.text = widget.customer!.street ?? '';
       _numberController.text = widget.customer!.number ?? '';

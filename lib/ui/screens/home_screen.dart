@@ -5,7 +5,6 @@ import 'package:customer_registration/ui/screens/customer_registration_screen.da
 import 'package:customer_registration/ui/widgets/customer_card.dart';
 import 'package:customer_registration/ui/widgets/customer_searchbar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class HomeScreen extends ConsumerWidget {
@@ -16,8 +15,6 @@ class HomeScreen extends ConsumerWidget {
 Widget build(BuildContext context, WidgetRef ref) {
   final filteredState = ref.watch(filteredCustomersProvider);
   
-  final customerState = ref.watch(customerControllerProvider);
-
   return Scaffold(
     appBar: AppBar(
       title: const Text("Lista de Clientes"),

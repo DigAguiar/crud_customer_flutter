@@ -35,8 +35,7 @@ class CustomerCard extends StatelessWidget {
           children: [
             const SizedBox(height: 4),
             Text(customer.email, style: TextStyle(color: Colors.grey[600])),
-            if (customer.phone != null && customer.phone!.isNotEmpty)
-              Text(customer.phone!, style: TextStyle(color: Colors.grey[600])),
+            Text(customer.phone, style: TextStyle(color: Colors.grey[600])),
             if (customer.isIncomplete)
               Padding(
                 padding: const EdgeInsets.only(top: 8.0),
