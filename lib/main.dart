@@ -9,7 +9,6 @@ void main() async {
   
   await Hive.initFlutter();
   Hive.registerAdapter(CustomerModelAdapter());
-  
   runApp(
     const ProviderScope(
       child: MyApp(),
