@@ -8,14 +8,14 @@ class CepRepository {
     final cleanCep = cep.replaceAll(RegExp(r'[^0-9]'), '');
 
     if (cleanCep.length != 8) {
-      throw Exception("CEP must have 8 digits.");
+      throw Exception("O CEP deve ter 8 dígitos.");
     }
 
     try {
-      final response =
-          await _dio.get('${AppConstants.viaCepBaseUrl}$cleanCep/json/');
+      final response = await _dio.get('${AppConstants.viaCepBaseUrl}$cleanCep/json/');
 
-      if (response.data['erro'] == true) {
+      final erro = response.data['erro'];
+      if (erro == true || erro == 'true') {
         throw Exception("CEP não encontrado.");
       }
 
